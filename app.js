@@ -36,8 +36,6 @@ let id, username;
 
 app.event('app_home_opened', async ({ event, client, body }) => {
   try {
-    // console.log(body.user)
-
     const blocks = [
       {
         type: "section",
@@ -198,7 +196,7 @@ app.action("create_task", async ({ack, body, client}) => {
   // },
   const user = body.user;
 
-  const m = moment().format()
+  const m = moment.utc().format()
   const initialDate = m.slice(0,10)
   const initialTime = m.slice(11,16)
 
@@ -333,10 +331,6 @@ app.action("create_task", async ({ack, body, client}) => {
 
 // send acks to buttons
 app.action('select_date1', async ({ ack}) => {
-  await ack();
-})
-
-app.action('select_date2', async ({ ack}) => {
   await ack();
 })
 
